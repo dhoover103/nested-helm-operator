@@ -1,0 +1,71 @@
+apiVersion: cloud.owncloud.com/v1alpha1
+kind: Owncloud
+metadata:
+  name: example-owncloud
+spec:
+  # Default values copied from <project_dir>/helm-charts/owncloud/values.yaml
+  
+  allowEmptyPassword: "yes"
+  externalDatabase:
+    database: bitnami_owncloud
+    host: null
+    password: null
+    port: 3306
+    user: bn_owncloud
+  image:
+    pullPolicy: IfNotPresent
+    registry: docker.io
+    repository: bitnami/owncloud
+    tag: 10.2.0-debian-9-r8
+  ingress:
+    enabled: false
+    hosts:
+    - annotations: null
+      certManager: false
+      name: owncloud.local
+      tls: false
+      tlsSecret: owncloud.local-tls
+    secrets: null
+  mariadb:
+    db:
+      name: bitnami_owncloud
+      user: bn_owncloud
+    enabled: true
+    master:
+      persistence:
+        accessMode: ReadWriteOnce
+        enabled: true
+        size: 8Gi
+    replication:
+      enabled: false
+  metrics:
+    enabled: false
+    image:
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: lusotycoon/apache-exporter
+      tag: v0.5.0
+    podAnnotations:
+      prometheus.io/port: "9117"
+      prometheus.io/scrape: "true"
+  networkPolicyApiVersion: extensions/v1beta1
+  owncloudEmail: user@example.com
+  owncloudUsername: user
+  persistence:
+    enabled: true
+    owncloud:
+      accessMode: ReadWriteOnce
+      size: 8Gi
+  podAnnotations: {}
+  resources:
+    requests:
+      cpu: 300m
+      memory: 512Mi
+  service:
+    externalTrafficPolicy: Cluster
+    nodePorts:
+      http: ""
+      https: ""
+    port: 80
+    type: LoadBalancer
+  

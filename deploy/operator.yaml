@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: owncloud-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: owncloud-operator
+  template:
+    metadata:
+      labels:
+        name: owncloud-operator
+    spec:
+      serviceAccountName: owncloud-operator
+      containers:
+        - name: owncloud-operator
+          # Replace this with the built image name
+          image: quay.io/dhoover103/owncloud-operator:v0.0.1
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "owncloud-operator"
