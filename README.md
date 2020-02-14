@@ -3,7 +3,7 @@ An owncloud operator to demonstrate how to handle nested helm charts
 
 ## Creating a helm-based operator with dependencies
 
-If your helm chart includes a dependencies.yaml/dependencies.lock file, the operator-sdk will pull the dependency when you create the project. That local copy will then be used by the operator. The structure looks like this:
+If your helm chart includes a dependency, the operator-sdk will pull the dependency when you create the project. That local copy will then be used by the operator. The structure looks like this:
 
     owncloud-operator
     ├── build
