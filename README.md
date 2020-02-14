@@ -37,7 +37,7 @@ If your helm chart includes a dependencies.yaml/dependencies.lock file, the oper
     ├── licenses
     └── watches.yaml
     
-In this example, we unzipped the folder to edit the parameters. We added a new value, nameOverride, to demonstrate the operator is using this local version of the helm chart.
+In this example, we unzipped the folder to edit the parameters (not shown above). We added a new value, nameOverride, to demonstrate the operator is using this local version of the helm chart.
 
     nameOverride: "example-nested-mariadb"
     
