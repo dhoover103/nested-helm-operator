@@ -43,5 +43,5 @@ In this example, we unzipped the folder to edit the parameters (not shown above)
     
 If you make changes, such as using a certified image instead, it will be in the newly-(re)built operator image. 
 
-NOTE: Because the operator will only pull this local version, you'll need to update it manually and release an updated operator image if you want to use a newer version of your dependency.
+NOTE: Because the operator will only pull this local version, you'll need to update it manually and release an updated operator image if you want to use a newer version of your dependency. (In this example, the operator would always deploy v5.11.3 no matter how many updates for mariadb are released)
 
